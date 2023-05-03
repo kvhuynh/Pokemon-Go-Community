@@ -1,7 +1,7 @@
 const config = require("../config/mysql.config.json");
 
 import { Sequelize } from 'sequelize-typescript';
-// import { User } from "../models/user.model"
+import { User } from "../models/user.model"
 // import { Budget } from "../models/budget.model"
 // import { BudgetItem } from "../models/budgetItem.model"
 // import { IncomeSource } from "../models/incomeSource.model"
@@ -23,5 +23,6 @@ const sequelize = new Sequelize(
 );
 
 // sequelize.addModels([User, Budget, BudgetItem, IncomeSource])
+sequelize.addModels([User])
 
 module.exports = sequelize;

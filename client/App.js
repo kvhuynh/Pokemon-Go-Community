@@ -1,41 +1,28 @@
-// import React from 'react';
-// import {
-//   StyleSheet,
-//   Button,
-//   View,
-//   SafeAreaView,
-//   Text,
-//   Alert,
-// } from 'react-native';
-
-// import Login from "./src/views/Login"
-
-// const App = () => {
-
-//   return (
-//     <Login></Login>
-//   )
-// };
-
-
-
-// export default App;
 
 import React from 'react';
-import MapView, { Marker } from 'react-native-maps';
-import { StyleSheet, View } from 'react-native';
+import {NavigationContainer} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import { Map } from './src/components/Map'
+import { Login } from './src/components/Login'
 
-export default function App() {
+export const App = () => {
 
-  const location = {
-    latitude: 47.32261,
-    longitude: -122.33111,
-    latitudeDelta: 0.0001,
-    longitudeDelta: 0.0001,
-  }
-
+  const Stack = createNativeStackNavigator();
 
   return (
+    <NavigationContainer>
+      <Stack.Navigator>
+        {/* <Stack.Screen 
+          name="Login"
+          component={Login}
+        /> */}
+        <Stack.Screen
+          name="Map"
+          component={Map}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
+    // <Map></Map>
   //   <View style={styles.container}>
   //   <MapView
   //     style={styles.map}
@@ -48,29 +35,21 @@ export default function App() {
   //     />
   //   </MapView>
   // </View>
-  <View style={styles.container}>
-        <MapView style={styles.map}
-          initialRegion={ location }
-        >
-        <Marker
-            coordinate={{
-              latitude: 47.32261,
-              longitude: -122.33111,
-            }}
-            title={"kevin's house"}
-            description={"pkemon raid here"}
-         />
-      </MapView>
- </View>
+//   <View style={styles.container}>
+//         <MapView style={styles.map}
+//           initialRegion={ location }
+//         >
+//         <Marker
+//             coordinate={{
+//               latitude: 47.32261,
+//               longitude: -122.33111,
+//             }}
+//             title={"kevin's house"}
+//             description={"pkemon raid here"}
+//          />
+//       </MapView>
+//  </View>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-  map: {
-    width: '100%',
-    height: '100%',
-  },
-});
+export default App;
